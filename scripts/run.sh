@@ -1,11 +1,12 @@
 #! /bin/bash
 touch /var/log/cron.log
-env | egrep '^BACKUP' | cat - /tmp/backup-cronjob > /etc/cron.d/backup-cronjob
+env | egrep '^BACKUP' | cat > /etc/cron.d/backup-cronjob
+echo "$BACKUP_FREQUENCY /root/backup.sh" >> /etc/cron.d/backup-cronjob
 crontab /etc/cron.d/backup-cronjob
 
 _term() { 
-  echo "Caught SIGTERM signal!" 
-  kill -TERM "$child" 2>/dev/null
+    echo "Caught SIGTERM signal!" 
+    kill -TERM "$child" 2>/dev/null
 }
 
 trap _term SIGTERM
