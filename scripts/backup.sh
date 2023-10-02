@@ -48,4 +48,4 @@ if [ -z $BACKUP_RETENTION ]; then
     exit
 fi
 
-ls -t $BACKUP_DIRECTORY/${BACKUP_BASE_NAME}-* | head -n -${BACKUP_RETENTION} | xargs --no-run-if-empty rm
+ls -rt $BACKUP_DIRECTORY/${BACKUP_BASE_NAME}-* | head -n -${BACKUP_RETENTION} | xargs --no-run-if-empty rm
