@@ -6,6 +6,8 @@ Backups are made every 15 minutes and produce a tgz file. Do not use this with d
 
 ### Usage
 
+#### Docker
+
     ---
     version: "2.1"
         services:
@@ -20,6 +22,29 @@ Backups are made every 15 minutes and produce a tgz file. Do not use this with d
                 volumes:
                     - /path/to/data/source:/data
                     - /path/to/backup/storage:/backups
+
+#### Kubernetes
+
+    containers:
+    - name: backup
+        image: untouchedwagons/simple-backup:1.0.5
+        resources:
+        limits:
+            memory: 256Mi
+            cpu: "1"
+        requests:
+            memory: 128Mi
+            cpu: "0.2"
+        volumeMounts:
+        - mountPath: /data
+            name: vaultwarden-config
+        - mountPath: /backups
+            name: backups
+        env:
+        - name: BACKUP_APPEND_DIRECTORY
+            value: "/some/sub/path"
+        - name: BACKUP_BASE_NAME
+            value: "Nginx"
 
 Backups will be stored in `/backups` if `BACKUP_APPEND_DIRECTORY` is not set. If `BACKUP_APPEND_DIRECTORY` is set, the path specified will be appended and the backups will be stored in that folder. Using the sample path and base name above the script will produce `Nginx-2023-09-28_20-30-00.tgz` in the folder `/backups/some/sub/path`.
 
