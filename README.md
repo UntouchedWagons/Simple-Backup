@@ -49,3 +49,7 @@ Backups are made every 15 minutes and produce a tgz file. Do not use this with d
 Backups will be stored in `/backups` if `BACKUP_APPEND_DIRECTORY` is not set. If `BACKUP_APPEND_DIRECTORY` is set, the path specified will be appended and the backups will be stored in that folder. Using the sample path and base name above the script will produce `Nginx-2023-09-28_20-30-00.tgz` in the folder `/backups/some/sub/path`.
 
 The command to prune excess backups isn't terribly smart but it should be safe to store backups of many different containers in the same folder.
+
+### Additional options
+
+As of 1.1.0 the environment variable `USE_CRON` has been added with a default value of `true`. When this variable is set to `false` the backup script is run immediately then the container exits.
