@@ -39,7 +39,7 @@ fi
 
 cd /data
 
-tar -cz --exclude='RESTORED' --exclude='lost+found' -f $BACKUP_FILE_PATH *
+tar -czp --exclude='RESTORED' --exclude='lost+found' -f $BACKUP_FILE_PATH *
 
 rm $BACKUP_DIRECTORY/backup.lock
 
