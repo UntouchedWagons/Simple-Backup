@@ -35,9 +35,7 @@ if [ ! -d "/data" ]; then
     exit
 fi
 
-cd /data
-
-tar -czp --exclude='RESTORED' --exclude='lost+found' -f $BACKUP_FILE_PATH *
+tar -czp --exclude='RESTORED' --exclude='lost+found' -f $BACKUP_FILE_PATH /data
 
 rm $BACKUP_DIRECTORY/backup.lock
 
