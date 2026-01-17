@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 LABEL org.opencontainers.image.authors="untouchedwagons@fastmail.com"
 
 COPY scripts/run.sh /root/run.sh

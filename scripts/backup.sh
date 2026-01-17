@@ -37,6 +37,8 @@ fi
 
 tar -czp --exclude='RESTORED' --exclude='lost+found' -f $BACKUP_FILE_PATH /data
 
+chown $PUID:$PGID $BACKUP_FILE_PATH
+
 rm $BACKUP_DIRECTORY/backup.lock
 
 if [ -z $BACKUP_RETENTION ]; then

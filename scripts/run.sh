@@ -7,8 +7,8 @@ if [ "$USE_CRON" = false ] ; then
 fi
 
 touch /var/log/cron.log
-env | egrep '^BACKUP' | cat >  /etc/cron.d/backup-cronjob
-echo "$BACKUP_FREQUENCY setpriv --reuid=$PUID --regid=$PGID --clear-groups /tmp/backup.sh" >> /etc/cron.d/backup-cronjob
+env > /etc/cron.d/backup-cronjob
+echo "$BACKUP_FREQUENCY /tmp/backup.sh" >> /etc/cron.d/backup-cronjob
 crontab /etc/cron.d/backup-cronjob
 
 _term() { 
