@@ -2,7 +2,7 @@
 
 if [ "$USE_CRON" = false ] ; then
     echo "Not using Cron, running backup script directly"
-    setpriv --reuid=$PUID --regid=$PGID --clear-groups /tmp/backup.sh
+    /tmp/backup.sh
     exit
 fi
 
