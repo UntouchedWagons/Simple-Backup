@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/ash
 
 if [ -n $BACKUP_APPEND_DIRECTORY ]; then
     BACKUP_DIRECTORY=${BACKUP_DIRECTORY}${BACKUP_APPEND_DIRECTORY}
@@ -7,6 +7,7 @@ fi
 echo "Backing up to ${BACKUP_DIRECTORY}"
 
 mkdir -p ${BACKUP_DIRECTORY}
+chown $PUID:$PGID ${BACKUP_DIRECTORY}
 
 if [ -f "$BACKUP_DIRECTORY/backup.lock" ]; then
     echo "Backup is in progress. If this is an error delete the backup.lock file in $BACKUP_DIRECTORY"
